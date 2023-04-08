@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1008416224853",
+    "project_id": "fir-flutter-auth-b5239",
+    "storage_bucket": "fir-flutter-auth-b5239.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1008416224853:android:f13171cbce26c0293b46dc",
+        "android_client_info": {
+          "package_name": "com.example.finlogin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1008416224853-fr0q9lv0us45obd2f795c2g9tpt6nljc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhh1olpGqCAoAN_6fxrZuCFhMFS6jbu_8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1008416224853-fr0q9lv0us45obd2f795c2g9tpt6nljc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
