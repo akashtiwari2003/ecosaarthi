@@ -1,8 +1,14 @@
+import 'package:finlogin/carboncalc.dart';
 import 'package:finlogin/ecovichaar.dart';
 import 'package:finlogin/garbageCollection.dart';
 import 'package:finlogin/greenhub.dart';
 import 'package:finlogin/locationChoose.dart';
 import 'package:flutter/material.dart';
+import 'package:quickalert/models/quickalert_type.dart';
+import 'package:quickalert/widgets/quickalert_dialog.dart';
+
+
+
 const _backCardColor = Color(0xFFFFECC6);
 
 class Dashboard extends StatefulWidget {
@@ -34,9 +40,7 @@ class DashboardState extends State<Dashboard> {
                 ),
               ),
             ),
-            drawer: Drawer(
-              child: Text('Hello'),
-            ),
+
             body: SingleChildScrollView(
               child: Column(children: [
                 Padding(
@@ -159,8 +163,16 @@ class DashboardState extends State<Dashboard> {
                                   ),
                                 ),
                                 onPressed: () {
-                                  Navigator.push(context,
-                                      MaterialPageRoute(builder: (context)=>const GreenCommunity())
+                                  QuickAlert.show(
+                                    context: context,
+                                    type: QuickAlertType.info,
+                                    title: 'Coming Soon!',
+                                    text: 'Stay Tuned',
+                                    confirmBtnText: 'Ok',
+                                    onConfirmBtnTap: ()=>{
+                                      Navigator.of(context).pop(),
+                                    },
+                                    confirmBtnColor: Colors.green,
                                   );
                                 },
                                 child: Stack(
@@ -208,8 +220,9 @@ class DashboardState extends State<Dashboard> {
                               ),
                             ),
                             onPressed: () {
-                              MaterialPageRoute(builder: (context)=> Club_details())
-                              )
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context)=>const carboncalc())
+                              );
                             },
                             child: Stack(
                               alignment: Alignment.bottomCenter,
@@ -285,102 +298,105 @@ class DashboardState extends State<Dashboard> {
                     ),
                   ),
                 ]),
+          //
+          // Row(children: [
+          //   Expanded(
+          //     child: Padding(
+          //       padding: const EdgeInsets.all(8.0),
+          //       child: Container(
+          //         padding: EdgeInsets.fromLTRB(4, 4, 4, 15),
+          //         decoration: BoxDecoration(
+          //             borderRadius: BorderRadius.circular(20),
+          //             color: Colors.white),
+          //         child: Column(children: [
+          //           ElevatedButton(
+          //             style: ElevatedButton.styleFrom(
+          //               backgroundColor: _backCardColor,
+          //               padding: const EdgeInsets.symmetric(
+          //                   horizontal: 15.0, vertical: 15.0),
+          //               shape: RoundedRectangleBorder(
+          //                 borderRadius: BorderRadius.circular(10.0),
+          //               ),
+          //             ),
+          //             onPressed: () {},
+          //             child: Stack(
+          //               alignment: Alignment.bottomCenter,
+          //               children: [
+          //                 Image.asset('assets/images/footprint.png'),
+          //                 Text(
+          //                   'Eco-Vichaar',
+          //                   style: TextStyle(
+          //                     color: Colors.black,
+          //                   ),
+          //                 ),
+          //               ],
+          //             ),
+          //           ),
+          //           SizedBox(
+          //             height: 5,
+          //           ),
+          //           Text(
+          //             'Carbon FootPrint\nTracker',
+          //             style: TextStyle(fontWeight: FontWeight.bold),
+          //             textAlign: TextAlign.center,
+          //           )
+          //         ]),
+          //       ),
+          //     ),
+          //   ),
+          //
+          //   Expanded(
+          //     child: Padding(
+          //       padding: const EdgeInsets.all(8.0),
+          //       child: Container(
+          //         padding: EdgeInsets.fromLTRB(4, 4, 4, 15),
+          //         decoration: BoxDecoration(
+          //             borderRadius: BorderRadius.circular(20),
+          //             color: Colors.white),
+          //         child: Column(children: [
+          //           ElevatedButton(
+          //             style: ElevatedButton.styleFrom(
+          //               backgroundColor: _backCardColor,
+          //               padding: const EdgeInsets.symmetric(
+          //                   horizontal: 15.0, vertical: 15.0),
+          //               shape: RoundedRectangleBorder(
+          //                 borderRadius: BorderRadius.circular(10.0),
+          //               ),
+          //             ),
+          //             onPressed: () {},
+          //             child: Stack(
+          //               alignment: Alignment.bottomCenter,
+          //               children: [
+          //                 Image.asset('assets/images/jeevan.png'),
+          //                 Text(
+          //                   'Eco-Jeevan',
+          //                   style: TextStyle(
+          //                     color: Colors.black,
+          //                   ),
+          //                 ),
+          //               ],
+          //             ),
+          //           ),
+          //           SizedBox(
+          //             height: 5,
+          //           ),
+          //           Text(
+          //             'Sustainable Lifestyle\nGuide',
+          //             style: TextStyle(fontWeight: FontWeight.bold),
+          //             textAlign: TextAlign.center,
+          //           )
+          //         ]),
+          //       ),
+          //     ),
+          //   ),
+          // ]
+          // )
 
-          Row(children: [
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  padding: EdgeInsets.fromLTRB(4, 4, 4, 15),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.white),
-                  child: Column(children: [
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: _backCardColor,
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 15.0, vertical: 15.0),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                      ),
-                      onPressed: () {},
-                      child: Stack(
-                        alignment: Alignment.bottomCenter,
-                        children: [
-                          Image.asset('assets/images/footprint.png'),
-                          Text(
-                            'Eco-Vichaar',
-                            style: TextStyle(
-                              color: Colors.black,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                      'Carbon FootPrint\nTracker',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.center,
-                    )
-                  ]),
-                ),
+              ]
               ),
-            ),
-
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  padding: EdgeInsets.fromLTRB(4, 4, 4, 15),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.white),
-                  child: Column(children: [
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: _backCardColor,
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 15.0, vertical: 15.0),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                      ),
-                      onPressed: () {},
-                      child: Stack(
-                        alignment: Alignment.bottomCenter,
-                        children: [
-                          Image.asset('assets/images/jeevan.png'),
-                          Text(
-                            'Eco-Jeevan',
-                            style: TextStyle(
-                              color: Colors.black,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                      'Sustainable Lifestyle\nGuide',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.center,
-                    )
-                  ]),
-                ),
-              ),
-            ),
-          ]
-          )
-
-              ]),
-            )));
+            )
+        )
+    );
   }
 }
 
