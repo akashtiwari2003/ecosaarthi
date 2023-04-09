@@ -1,12 +1,9 @@
-import 'package:finlogin/carboncalc.dart';
-import 'package:finlogin/ecovichaar.dart';
-import 'package:finlogin/garbageCollection.dart';
-import 'package:finlogin/greenhub.dart';
-import 'package:finlogin/locationChoose.dart';
 import 'package:flutter/material.dart';
+import 'package:finlogin/carboncalc.dart';
+import 'package:finlogin/garbageCollection.dart';
+import 'package:finlogin/locationChoose.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
-
 
 
 const _backCardColor = Color(0xFFFFECC6);
@@ -125,7 +122,7 @@ class DashboardState extends State<Dashboard> {
                                   children: [
                                     Image.asset('assets/images/truck.png'),
                                     Text(
-                                      'Svachh Seva',
+                                      'Swachh Seva',
                                       style: TextStyle(
                                         color: Colors.black,
                                       ),
@@ -137,13 +134,14 @@ class DashboardState extends State<Dashboard> {
                                 height: 5,
                               ),
                               Text(
-                                'Waste Disposal',
+                                'Waste Disposal Request',
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               )
                             ]),
                           ),
                         ),
                       ),
+
                       Expanded(
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -163,24 +161,16 @@ class DashboardState extends State<Dashboard> {
                                   ),
                                 ),
                                 onPressed: () {
-                                  QuickAlert.show(
-                                    context: context,
-                                    type: QuickAlertType.info,
-                                    title: 'Coming Soon!',
-                                    text: 'Stay Tuned',
-                                    confirmBtnText: 'Ok',
-                                    onConfirmBtnTap: ()=>{
-                                      Navigator.of(context).pop(),
-                                    },
-                                    confirmBtnColor: Colors.green,
+                                  Navigator.push(context,
+                                      MaterialPageRoute(builder: (context)=>const LocationChoose())
                                   );
                                 },
                                 child: Stack(
                                   alignment: Alignment.bottomCenter,
                                   children: [
-                                    Image.asset('assets/images/tree.png'),
+                                    Image.asset('assets/images/jeevan.png'),
                                     Text(
-                                      'Haryaali Hub',
+                                      'Swachh Seva',
                                       style: TextStyle(
                                         color: Colors.black,
                                       ),
@@ -192,13 +182,16 @@ class DashboardState extends State<Dashboard> {
                                 height: 5,
                               ),
                               Text(
-                                'Green Community',
+                                'Waste Collection',
                                 style: TextStyle(fontWeight: FontWeight.bold),
+                                textAlign: TextAlign.center,
                               )
                             ]),
                           ),
                         ),
                       ),
+                      //paste here
+
                     ]),
                 Row(children: [
                   Expanded(
@@ -249,6 +242,7 @@ class DashboardState extends State<Dashboard> {
                       ),
                     ),
                   ),
+
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -268,16 +262,24 @@ class DashboardState extends State<Dashboard> {
                               ),
                             ),
                             onPressed: () {
-                              Navigator.push(context,
-                                  MaterialPageRoute(builder: (context)=>const LocationChoose())
+                              QuickAlert.show(
+                                context: context,
+                                type: QuickAlertType.info,
+                                title: 'Coming Soon!',
+                                text: 'Stay Tuned',
+                                confirmBtnText: 'Ok',
+                                onConfirmBtnTap: ()=>{
+                                  Navigator.of(context).pop(),
+                                },
+                                confirmBtnColor: Colors.green,
                               );
                             },
                             child: Stack(
                               alignment: Alignment.bottomCenter,
                               children: [
-                                Image.asset('assets/images/jeevan.png'),
+                                Image.asset('assets/images/tree.png'),
                                 Text(
-                                  'Garbage Pickup',
+                                  'Haryaali Hub',
                                   style: TextStyle(
                                     color: Colors.black,
                                   ),
@@ -289,15 +291,75 @@ class DashboardState extends State<Dashboard> {
                             height: 5,
                           ),
                           Text(
-                            'Pickup Garbages\nfrom these places',
+                            'Green Community',
                             style: TextStyle(fontWeight: FontWeight.bold),
-                            textAlign: TextAlign.center,
                           )
                         ]),
                       ),
                     ),
                   ),
+
                 ]),
+          Row(children: [
+            
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  padding: EdgeInsets.fromLTRB(4, 4, 4, 15),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.white),
+                  child: Column(children: [
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: _backCardColor,
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 15.0, vertical: 15.0),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                      ),
+                      onPressed: () {
+                        QuickAlert.show(
+                          context: context,
+                          type: QuickAlertType.info,
+                          title: 'Coming Soon!',
+                          text: 'Stay Tuned',
+                          confirmBtnText: 'Ok',
+                          onConfirmBtnTap: ()=>{
+                            Navigator.of(context).pop(),
+                          },
+                          confirmBtnColor: Colors.green,
+                        );
+                      },
+                      child: Stack(
+                        alignment: Alignment.bottomCenter,
+                        children: [
+                          Image.asset('assets/images/tree.png'),
+                          Text(
+                            'Haryaali Hub',
+                            style: TextStyle(
+                              color: Colors.black,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      'Green Community',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    )
+                  ]),
+                ),
+              ),
+            ),
+
+
+          ],)
           //
           // Row(children: [
           //   Expanded(

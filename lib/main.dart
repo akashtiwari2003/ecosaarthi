@@ -2,6 +2,8 @@ import 'package:finlogin/dashboard.dart';
 import 'package:finlogin/firebase_options.dart';
 import 'package:finlogin/garbageCollection.dart';
 import 'package:finlogin/locationChoose.dart';
+import 'package:finlogin/splashscreen.dart';
+import 'package:finlogin/sustainable.dart';
 import 'package:flutter/material.dart';
 import 'package:finlogin/login.dart';
 import 'login.dart';
@@ -35,7 +37,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home:  const EmailPasswordLogin(),
+      home:  const Slg(),
     );
   }
 }

@@ -47,11 +47,23 @@ class _GarbageCollectionState extends State<GarbageCollection> {
   }
 
   Future<void> GetAddressFromLatLong(Position p) async{
+    QuickAlert.show(
+      context: context,
+      type: QuickAlertType.loading,
+      title: 'Updating Location...',
+      text: '',
+      confirmBtnText: 'Ok',
+      onConfirmBtnTap: ()=>{
+        Navigator.of(context).pop(),
+      },
+      confirmBtnColor: Colors.green,
+    );
     List<Placemark> placemark= await placemarkFromCoordinates(p.latitude, p.longitude);
     print(placemark);
     Placemark place = placemark[0];
     Address = '${place.street}, ${place.locality},${place.postalCode}${place.country}, ';
     await loc.add({'lat': '${p.latitude}', 'lon' : '${p.longitude}', 'country' : '${place.country}', 'locality' : '${place.locality}', 'street' : '${place.street}',});
+    Navigator.of(context).pop();
     QuickAlert.show(
       context: context,
       type: QuickAlertType.success,
