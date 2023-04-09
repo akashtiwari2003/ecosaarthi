@@ -1,4 +1,5 @@
 import 'package:finlogin/garbageCollection.dart';
+import 'package:finlogin/signup.dart';
 import 'package:flutter/material.dart';
 import 'custom_textfield.dart';
 import 'dashboard.dart';
@@ -40,7 +41,7 @@ class _EmailPasswordLoginState extends State<EmailPasswordLogin> {
         onConfirmBtnTap: ()=>{
           Navigator.of(context).pop(),
           Navigator.push(context,
-              MaterialPageRoute(builder: (context)=>const GarbageCollection())
+              MaterialPageRoute(builder: (context)=>const Dashboard())
           )
         },
         confirmBtnColor: Colors.green,
@@ -63,47 +64,77 @@ class _EmailPasswordLoginState extends State<EmailPasswordLogin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      body: SingleChildScrollView(
+          child: Column(
+            //mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset("assets/images/login.png", fit: BoxFit.cover),
+          const Text("Sign In",
+          style: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        Padding(
+        padding:
+        const EdgeInsets.symmetric(vertical: 16.0, horizontal: 32.0),
+        child: Column(
         children: [
-          const Text(
-            "Login",
-            style: TextStyle(fontSize: 30),
-          ),
-          SizedBox(height: MediaQuery.of(context).size.height * 0.08),
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal: 20),
-            child: CustomTextField(
-              controller: emailController,
-              hintText: 'Enter your email',
+        TextFormField(
+        decoration: InputDecoration(
+        hintText: "Enter Username",
+        labelText: "Username",
+        ),
+          controller: emailController,
+        ),
+        TextFormField(
+        obscureText: true,
+        decoration: InputDecoration(
+        hintText: "Enter Password",
+        labelText: "Password",
+        ),
+          controller: passwordController,
+        ),
+        SizedBox(
+        height: 30.0,
+        ),
+          InkWell(
+            child: Text('Do not have an account? Sign Up',style: TextStyle(
+              color: Colors.blue,
             ),
-          ),
-          const SizedBox(height: 20),
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal: 20),
-            child: CustomTextField(
-              controller: passwordController,
-              hintText: 'Enter your password',
             ),
+            onTap: (){
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context)=>const ClientLogin())
+              );
+            }
           ),
-          const SizedBox(height: 40),
-          ElevatedButton(
-            onPressed: loginUser,
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(Colors.blue),
-              textStyle: MaterialStateProperty.all(
-                const TextStyle(color: Colors.white),
+
+          SizedBox(
+            height: 30.0,
+          ),
+              ElevatedButton(
+                onPressed: loginUser,
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.blue),
+                  textStyle: MaterialStateProperty.all(
+                    const TextStyle(color: Colors.white),
+                  ),
+                  minimumSize: MaterialStateProperty.all(
+                    Size(MediaQuery.of(context).size.width / 2.5, 50),
+                  ),
+                ),
+                child: const Text(
+                  "Login",
+                  style: TextStyle(color: Colors.white, fontSize: 16),
+                ),
               ),
-              minimumSize: MaterialStateProperty.all(
-                Size(MediaQuery.of(context).size.width / 2.5, 50),
-              ),
-            ),
-            child: const Text(
-              "Login",
-              style: TextStyle(color: Colors.white, fontSize: 16),
-            ),
-          ),
+
         ],
+          ),
+        ),
+        ],
+        ),
       ),
     );
   }

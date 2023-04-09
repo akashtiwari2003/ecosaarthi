@@ -1,4 +1,4 @@
-import 'package:finlogin/dataupload.dart';
+import 'package:finlogin/dashboard.dart';
 import 'package:finlogin/firebase_options.dart';
 import 'package:finlogin/garbageCollection.dart';
 import 'package:finlogin/locationChoose.dart';
@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home:  const LocationChoose(),
+      home:  const EmailPasswordLogin(),
     );
   }
 }

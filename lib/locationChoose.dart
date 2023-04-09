@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class LocationChoose extends StatefulWidget {
@@ -19,7 +20,7 @@ class _LocationChooseState extends State<LocationChoose> {
         body: Container(
             child: SingleChildScrollView(
                 child: Column(children: [
-      StreamBuilder(
+                  StreamBuilder(
         stream: FirebaseFirestore.instance.collection("location").snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (!snapshot.hasData) {
@@ -40,21 +41,14 @@ class _LocationChooseState extends State<LocationChoose> {
                     return Card(
                         child: ListTile(
                       // leading: Image.network(snap['logo'].toString()),
-                      title: Text(snap['locality'].toString() + snap['country'].toString()),
-                      subtitle: Text(snap['lat'].toString() + snap['lat'].toString()),
+                      title: Text(snap['locality'].toString() + ' ' + snap['country'].toString()),
+                      subtitle: Text(snap['lat'].toString() + ', ' + snap['lat'].toString()),
                       onTap: () {
                         name:
-                        snap['name'];
+                        snap['lat'];
                         desc:
-                        snap['desc'];
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Club_details(
-                                      snap: snap,
-                                    )
-                            )
-                        );
+                        snap['lon'];
+                        launch('https://www.google.com/maps/search/?api=1&query='+snap['lat'].toString()+','+snap['lat'].toString());
                       },
                     ));
                   }).toList()));
