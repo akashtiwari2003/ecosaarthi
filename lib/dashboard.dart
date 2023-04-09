@@ -1,3 +1,4 @@
+import 'package:finlogin/sustainable.dart';
 import 'package:flutter/material.dart';
 import 'package:finlogin/carboncalc.dart';
 import 'package:finlogin/garbageCollection.dart';
@@ -52,11 +53,11 @@ class DashboardState extends State<Dashboard> {
                         ),
                       ),
                       SizedBox(
-                        child: Text(
-                          'See All',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, color: Colors.grey),
-                        ),
+                        // child: Text(
+                        //   'See All',
+                        //   style: TextStyle(
+                        //       fontWeight: FontWeight.bold, color: Colors.grey),
+                        // ),
                       ),
                     ],
                   ),
@@ -168,7 +169,7 @@ class DashboardState extends State<Dashboard> {
                                 child: Stack(
                                   alignment: Alignment.bottomCenter,
                                   children: [
-                                    Image.asset('assets/images/jeevan.png'),
+                                    Image.asset('assets/images/truck.png'),
                                     Text(
                                       'Swachh Seva',
                                       style: TextStyle(
@@ -242,7 +243,6 @@ class DashboardState extends State<Dashboard> {
                       ),
                     ),
                   ),
-
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -262,16 +262,8 @@ class DashboardState extends State<Dashboard> {
                               ),
                             ),
                             onPressed: () {
-                              QuickAlert.show(
-                                context: context,
-                                type: QuickAlertType.info,
-                                title: 'Coming Soon!',
-                                text: 'Stay Tuned',
-                                confirmBtnText: 'Ok',
-                                onConfirmBtnTap: ()=>{
-                                  Navigator.of(context).pop(),
-                                },
-                                confirmBtnColor: Colors.green,
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context)=>const Slg())
                               );
                             },
                             child: Stack(
@@ -279,7 +271,7 @@ class DashboardState extends State<Dashboard> {
                               children: [
                                 Image.asset('assets/images/tree.png'),
                                 Text(
-                                  'Haryaali Hub',
+                                  'Eco-Jeevan',
                                   style: TextStyle(
                                     color: Colors.black,
                                   ),
@@ -291,17 +283,19 @@ class DashboardState extends State<Dashboard> {
                             height: 5,
                           ),
                           Text(
-                            'Green Community',
+                            'Sustainable lifestyle\nguide',
                             style: TextStyle(fontWeight: FontWeight.bold),
+                            textAlign: TextAlign.center,
                           )
                         ]),
                       ),
                     ),
                   ),
 
+
                 ]),
           Row(children: [
-            
+
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),

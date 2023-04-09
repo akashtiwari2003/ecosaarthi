@@ -17,7 +17,15 @@ Widget buildSheet(String bodyText, Function() onPress) => Container(
       SizedBox(
         height: 15,
       ),
-      ElevatedButton(onPressed: onPress, child: Text('Show More')),
+      ElevatedButton(
+          onPressed: onPress,
+          style: ButtonStyle(
+            backgroundColor: MaterialStateColor.resolveWith((states) => Colors.green),
+          ),
+          child: Text('Show More')
+      ),
+
+
     ],
   ),
 );
@@ -75,7 +83,7 @@ class Slg extends StatelessWidget {
                             child: Stack(
                               alignment: Alignment.bottomCenter,
                               children: [
-                                Image.asset('assets/images/truck.png'),
+                                Image.asset('assets/images/tree.png'),
                                 Text(
                                   'Sustatainable LifeStyle\nGuide',
                                   style: TextStyle(
