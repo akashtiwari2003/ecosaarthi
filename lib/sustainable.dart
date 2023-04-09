@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-
+import 'package:url_launcher/url_launcher.dart';
 const _backCardColor = Color(0xFFFFECC6);
-Widget buildSheet(String bodyText) => Container(
+Widget buildSheet(String bodyText, Function() onPress) => Container(
   margin: EdgeInsets.all(10),
   decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
   padding: EdgeInsets.all(15),
@@ -17,7 +17,7 @@ Widget buildSheet(String bodyText) => Container(
       SizedBox(
         height: 15,
       ),
-      ElevatedButton(onPressed: () {}, child: Text('Show More')),
+      ElevatedButton(onPressed: onPress, child: Text('Show More')),
     ],
   ),
 );
@@ -114,7 +114,9 @@ class Slg extends StatelessWidget {
                           child: GestureDetector(
                             onTap: () => showModalBottomSheet(
                                 context: context,
-                                builder: (context) => buildSheet(susTrasport)),
+                                builder: (context) => buildSheet(susTrasport,() {
+                                  launch('https://www.energy.gov/eere/sustainable-transportation#:~:text=Sustainable%20transportation%20refers%20to%20low,as%20well%20as%20domestic%20fuels.');
+                                }),),
                             child: ListTile(
                               leading: Image.asset('assets/images/truck.png'),
                               title: Text('Sustainable \nTransportation'),
@@ -133,7 +135,9 @@ class Slg extends StatelessWidget {
                           child: GestureDetector(
                             onTap: () => showModalBottomSheet(
                                 context: context,
-                                builder: (context) => buildSheet(susFood)),
+                                builder: (context) => buildSheet(susFood,(){
+                            launch('https://fssai.gov.in/upload/uploadfiles/files/Enabling_Food_Systems_Nuffoods_02_09_2021.pdf');
+                            })),
                             child: ListTile(
                               leading: Image.asset('assets/images/truck.png'),
                               title: Text('Sustainable \nFood Choices'),
@@ -152,7 +156,10 @@ class Slg extends StatelessWidget {
                           child: GestureDetector(
                             onTap: () => showModalBottomSheet(
                                 context: context,
-                                builder: (context) => buildSheet(susRecycle)),
+                                builder: (context) => buildSheet(susRecycle,(){
+                                  launch('https://www.wm.com/us/en/recycle-right/recycling-101');
+                                }),
+                            ),
                             child: ListTile(
                               leading: Image.asset('assets/images/truck.png'),
                               title: Text('Sustainable \nRecycling idea'),
